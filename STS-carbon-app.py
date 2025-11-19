@@ -117,7 +117,7 @@ with colA:
     )
 
     
-        low_val = f"{annual_value_low:,.0f}"
+low_val = f"{annual_value_low:,.0f}"
 high_val = f"{annual_value_high:,.0f}"
 
 st.markdown(
