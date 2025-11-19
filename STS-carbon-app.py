@@ -117,8 +117,21 @@ with colA:
     )
 
     st.write(
-        f"**Monetary value (SCC)**: "
-        f"${one_time_value_low:,.0f} – ${one_time_value_high:,.0f}"
+        low_val = f"{annual_value_low:,.0f}"
+high_val = f"{annual_value_high:,.0f}"
+
+st.markdown(
+    f"""
+    <p style='font-size:16px;'>
+        <strong>Annual SCC value:</strong>
+        <span style='white-space: nowrap;'>${low_val}</span>
+        –
+        <span style='white-space: nowrap;'>${high_val}</span>
+        per year
+    </p>
+    """,
+    unsafe_allow_html=True
+
     )
 
 with colB:
