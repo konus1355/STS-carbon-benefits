@@ -106,11 +106,20 @@ with colA:
         "Cars equivalent (one-time)",
         f"{cars_one_time:,.0f} cars · year⁻¹"
     )
-    st.write(
-        f"**Monetary value (SCC):** "
-        f"${one_time_value_low:,.0f} – ${one_time_value_high:,.0f}"
-    )
+    low_val_one = f"{one_time_value_low:,.0f}"
+    high_val_one = f"{one_time_value_high:,.0f}"
 
+    st.markdown(
+        f"""
+        <p style='font-size:16px;'>
+            <strong>Monetary value (SCC):</strong>
+            <span style='white-space: nowrap;'>${low_val_one}</span>
+            –
+            <span style='white-space: nowrap;'>${high_val_one}</span>
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
 with colB:
     st.subheader("Preserved annual sink (ongoing)")
     st.metric(
@@ -122,10 +131,22 @@ with colB:
         "Cars equivalent (annual)",
         f"{cars_annual:,.0f} cars · year⁻¹"
     )
-    st.write(
-        f"**Annual SCC value:** "
-        f"${annual_value_low:,.0f} – ${annual_value_high:,.0f} per year"
+    low_val_ann = f"{annual_value_low:,.0f}"
+    high_val_ann = f"{annual_value_high:,.0f}"
+
+    st.markdown(
+        f"""
+        <p style='font-size:16px;'>
+            <strong>Annual SCC value:</strong>
+            <span style='white-space: nowrap;'>${low_val_ann}</span>
+            –
+            <span style='white-space: nowrap;'>${high_val_ann}</span>
+            per year
+        </p>
+        """,
+        unsafe_allow_html=True
     )
+
 
 st.divider()
 
