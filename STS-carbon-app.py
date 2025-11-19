@@ -3,10 +3,10 @@ import streamlit as st
 st.title("Forest Carbon Benefits of Spongy Moth Management (STS)")
 
 st.markdown(
-    """
+    '''
 This simple calculator estimates the **carbon and economic benefits** of preventing
-spongy moth–induced tree mortality on forested land.
-"""
+spongy-moth–induced tree mortality on forested land.
+'''
 )
 
 st.header("Inputs")
@@ -68,8 +68,6 @@ with col2:
 
 st.divider()
 
-# --- Core calculations ---
-
 # Conversions
 ACRE_TO_HA = 0.40468564224
 C_TO_CO2 = 3.667
@@ -77,24 +75,19 @@ C_TO_CO2 = 3.667
 area_ha = area_acres * ACRE_TO_HA
 mortality_frac = mortality_percent / 100.0
 
-# One-time carbon pulse avoided (from mortality)
-# C lost = area_ha * mortality_frac * carbon_stock (t C)
+# One-time carbon pulse avoided (mortality)
 carbon_lost_tC = area_ha * mortality_frac * carbon_stock
 co2_avoided_t = carbon_lost_tC * C_TO_CO2
 
-# Annual sequestration preserved (because those trees stay alive)
-# Annual C uptake = area_ha * mortality_frac * sequestration_rate
+# Annual preserved sink (ongoing sequestration)
 annual_c_uptake_tC = area_ha * mortality_frac * sequestration_rate
 annual_co2_preserved_t = annual_c_uptake_tC * C_TO_CO2
 
-# Cars equivalent
 cars_one_time = co2_avoided_t / car_emissions if car_emissions > 0 else 0.0
 cars_annual = annual_co2_preserved_t / car_emissions if car_emissions > 0 else 0.0
 
-# Dollar values
 one_time_value_low = co2_avoided_t * scc_low
 one_time_value_high = co2_avoided_t * scc_high
-
 annual_value_low = annual_co2_preserved_t * scc_low
 annual_value_high = annual_co2_preserved_t * scc_high
 
@@ -104,66 +97,34 @@ colA, colB = st.columns(2)
 
 with colA:
     st.subheader("One-time avoided carbon pulse (mortality)")
-
     st.metric(
         "CO₂ avoided (one-time)",
         f"{co2_avoided_t/1e6:.3f} Mt CO₂",
         help=f"{co2_avoided_t:,.0f} t CO₂"
     )
-
     st.metric(
         "Cars equivalent (one-time)",
         f"{cars_one_time:,.0f} cars · year⁻¹"
     )
-
-    
-low_val = f"{annual_value_low:,.0f}"
-high_val = f"{annual_value_high:,.0f}"
-
-st.markdown(
-    f"""
-    <p style='font-size:16px;'>
-        <strong>Annual SCC value:</strong>
-        <span style='white-space: nowrap;'>${low_val}</span>
-        –
-        <span style='white-space: nowrap;'>${high_val}</span>
-        per year
-    </p>
-    """,
-    unsafe_allow_html=True
-
+    st.write(
+        f"**Monetary value (SCC):** "
+        f"${one_time_value_low:,.0f} – ${one_time_value_high:,.0f}"
     )
-
 
 with colB:
     st.subheader("Preserved annual sink (ongoing)")
-
     st.metric(
         "Annual CO₂ preserved",
         f"{annual_co2_preserved_t/1e3:.1f} kt CO₂ / yr",
         help=f"{annual_co2_preserved_t:,.0f} t CO₂ / yr"
     )
-
     st.metric(
         "Cars equivalent (annual)",
         f"{cars_annual:,.0f} cars · year⁻¹"
     )
-
-    low_val = f"{annual_value_low:,.0f}"
-high_val = f"{annual_value_high:,.0f}"
-
-st.markdown(
-    f"""
-    <p style='font-size:16px;'>
-        <strong>Annual SCC value:</strong>
-        <span style='white-space: nowrap;'>${low_val}</span>
-        –
-        <span style='white-space: nowrap;'>${high_val}</span>
-        per year
-    </p>
-    """,
-    unsafe_allow_html=True
-
+    st.write(
+        f"**Annual SCC value:** "
+        f"${annual_value_low:,.0f} – ${annual_value_high:,.0f} per year"
     )
 
 st.divider()
