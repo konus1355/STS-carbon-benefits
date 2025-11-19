@@ -119,7 +119,7 @@ with colA:
     st.write(
         low_val = f"{annual_value_low:,.0f}"
 high_val = f"{annual_value_high:,.0f}"
-
+)
 st.markdown(
     f"""
     <p style='font-size:16px;'>
@@ -133,6 +133,7 @@ st.markdown(
     unsafe_allow_html=True
 
     )
+
 
 with colB:
     st.subheader("Preserved annual sink (ongoing)")
