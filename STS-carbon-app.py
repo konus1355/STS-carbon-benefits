@@ -116,10 +116,10 @@ with colA:
         f"{cars_one_time:,.0f} cars · year⁻¹"
     )
 
-    st.write(
+    
         low_val = f"{annual_value_low:,.0f}"
 high_val = f"{annual_value_high:,.0f}"
-)
+
 st.markdown(
     f"""
     <p style='font-size:16px;'>
