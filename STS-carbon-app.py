@@ -80,8 +80,7 @@ carbon_lost_tC = area_ha * mortality_frac * carbon_stock
 co2_avoided_t = carbon_lost_tC * C_TO_CO2
 
 # Annual preserved sink (ongoing sequestration)
-annual_c_uptake_tC = area_ha * mortality_frac * sequestration_rate
-annual_co2_preserved_t = annual_c_uptake_tC * C_TO_CO2
+annual_co2_preserved_t = area_ha * mortality_frac * sequestration_co2
 
 cars_one_time = co2_avoided_t / car_emissions if car_emissions > 0 else 0.0
 cars_annual = annual_co2_preserved_t / car_emissions if car_emissions > 0 else 0.0
