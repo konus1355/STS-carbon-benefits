@@ -37,13 +37,13 @@ with col1:
     )
 
 with col2:
-    sequestration_rate = st.number_input(
-        "Annual net sequestration (t C / ha / yr)",
-        min_value=0.1,
-        max_value=3.0,
-        value=0.5,
-        step=0.1
-    )
+    sequestration_co2 = st.slider(
+    "Annual net sequestration (t CO₂ / ha / yr)",
+    min_value=1.83,
+    max_value=5.50,
+    value=1.83,
+    step=0.01
+)
     scc_low = st.number_input(
         "Social Cost of Carbon – low ($ / t CO₂)",
         min_value=0.0,
