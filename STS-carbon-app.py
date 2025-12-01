@@ -154,10 +154,4 @@ with colB:
     )
 
 
-st.divider()
 
-st.caption(
-    "Note: This is a simple illustrative tool. Users should adjust carbon stock, "
-    "sequestration rates, and mortality percentages based on local forest data "
-    "and published literature."
-)
