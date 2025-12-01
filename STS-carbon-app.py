@@ -3,7 +3,9 @@ import streamlit as st
 
 with st.sidebar:
     st.markdown("### 📘 Documentation")
-    st.markdown("[View README on GitHub](https://github.com/<konus1355>/<STS-carbon-benefits>/blob/main/README.md)")
+    st.markdown("[View README on GitHub](https://github.com/<your-user>/<your-repo>/blob/main/README.md)")
+    st.markdown("---")
+    st.caption("**Note:** This tool is illustrative. Adjust carbon stock, sequestration rates, and mortality based on local FIA data and published literature.")
 
 st.title("Forest Carbon Benefits of Spongy Moth Management (STS)")
 
